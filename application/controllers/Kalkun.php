@@ -156,12 +156,37 @@ class Kalkun extends MY_Controller {
 	 *
 	 * @access	public
 	 */
-	function notification()
-	{
-		$status = $this->Kalkun_model->get_gammu_info('last_activity')->row('UpdatedInDB');
-		$response['signal'] = intval($this->Kalkun_model->get_gammu_info('phone_signal')->row('Signal'));
-		$response['signal_lbl'] = tr_raw('{0}%', NULL, $this->Kalkun_model->get_gammu_info('phone_signal')->row('Signal'));
-		$response['battery'] = intval($this->Kalkun_model->get_gammu_info('phone_battery')->row('Battery'));
+function notification()
+{
+	$status = $this->Kalkun_model->get_gammu_info('last_activity')->row('UpdatedInDB');
+	
+	// Signal
+	///////////////////////$signal = intval($this->Kalkun_model->get_gammu_info('phone_signal')->row('SignalLevel'));	
+///////////////////////////$signal = intval($this->Kalkun_model->get_gammu_info('phone_signal')->row('Signao'));
+
+
+// Recupera una sola volta l'oggetto
+$row = $this->Kalkun_model->get_gammu_info('phone_signal')->row();
+
+function getVal($row, $field) {
+    return isset($row->$field) ? intval($row->$field) : -1;
+}
+
+$signalLevel = getVal($row, 'SignalLevel');
+$signal      = getVal($row, 'Signal');
+$signao      = getVal($row, 'Signao');
+
+// Prendi il valore maggiore tra quelli disponibili
+$finalSignal = max($signalLevel, $signal, $signao);
+
+$response['signal'] = $finalSignal;
+$response['signal_lbl'] = tr_raw('{0}%', NULL, $finalSignal);
+
+
+
+
+	//////////////////////$response['signal'] = $signal;
+	//////////////////////$response['signal_lbl'] = tr_raw('{0}%', NULL, $signal);
 		$response['battery_lbl'] = tr_raw('{0}%', NULL, $this->Kalkun_model->get_gammu_info('phone_battery')->row('Battery'));
 		if ( ! empty($status))
 		{

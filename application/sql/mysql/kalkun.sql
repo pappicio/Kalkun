@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `sms_used` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(12) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `realname` varchar(100) NOT NULL,
   `password` varchar(191) NOT NULL,
   `phone_number` varchar(15) NOT NULL,

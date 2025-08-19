@@ -494,12 +494,11 @@ class Kalkun_model extends CI_Model {
 				$this->db->limit('1');
 				break;
 
-			case 'phone_signal':
-				$this->db->from('phones');
-				$this->db->select('Signal');
-				$this->db->order_by('UpdatedInDB', 'DESC');
-				$this->db->limit('1');
-				break;
+case 'phone_signal':
+    $this->db->from('phones');
+    $this->db->order_by('UpdatedInDB', 'DESC');
+    $this->db->limit(1);
+    break;
 
 			case 'phone_battery':
 				$this->db->from('phones');
