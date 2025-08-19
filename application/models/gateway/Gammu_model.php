@@ -224,13 +224,14 @@ class Gammu_model extends CI_Model {
 			'SenderID' => $tmp_data['SenderID'],
 			'TextDecoded' => $tmp_data['message'],
 			'RelativeValidity' => $tmp_data['validity'],
+			'MultiPart'        => 0, // default sempre 0
 			'DeliveryReport' => $tmp_data['delivery_report'],
 			'CreatorID' => '🦃 Kalkun '.$this->config->item('kalkun_version')
 		);
 
 		if ($tmp_data['option'] === 'multipart')
 		{
-			$data['MultiPart'] = 'true';
+			$data['MultiPart'] = 1; //////'true';
 			$data['UDH'] = $tmp_data['UDH'] . sprintf('%02X', $tmp_data['part']) . '01';
 		}
 
