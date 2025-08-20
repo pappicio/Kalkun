@@ -28,7 +28,7 @@ $lang['Statistics']='Statistiche';
 $lang['System information']='Informazioni di Sistema';
 $lang['Alerts']='Avvisi';
 $lang['Operating system']='Sistema Operativo';
-$lang['Gammu version']='Versione Gammu';
+$lang['Gammu version']='Versione';
 $lang['Gammu DB schema']='Schema DB Gammu';
 $lang['Modem IMEI']='IMEI modem';
 
